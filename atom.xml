@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>微光坊</title>
+  <title>林某の小作坊</title>
   
-  <subtitle>林某の小作坊</subtitle>
+  <subtitle>微光坊</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://nikejasonlyz.github.io/"/>
