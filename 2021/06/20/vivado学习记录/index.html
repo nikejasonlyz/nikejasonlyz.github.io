@@ -1,0 +1,1941 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/4.3.1'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <link rel="preload" href="/css/first.css" as="style">
+  
+
+  <!-- 页面元数据 -->
+  
+  <title>vivado学习备忘 - 林某の小作坊</title>
+  
+    <meta name="keywords" content="vivado">
+  
+
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="林某の小作坊" type="application/atom+xml">
+  
+
+  <!-- import meta -->
+  
+    
+      <meta name='theme-color' content='#ffffff'>
+    
+      <meta name='msapplication-TileColor' content='#da532c'>
+    
+      <meta name='msapplication-config' content='favicons/browserconfig.xml'>
+    
+  
+
+  <!-- link -->
+  
+    <link rel="shortcut icon" type='image/x-icon' href="/favicons/favicon.ico">
+  
+
+  <!-- import link -->
+  
+  
+  <link rel='apple-touch-icon' sizes='180x180' href='favicons/apple-touch-icon.png'>
+  <link rel='icon' type='image/png' sizes='32x32' href='favicons/favicon-32x32.png'>
+  <link rel='icon' type='image/png' sizes='16x16' href='favicons/favicon-16x16.png'>
+  <link rel='manifest' href='favicons/site.webmanifest'>
+  
+
+  
+    
+<link rel="stylesheet" href="/css/first.css">
+
+  
+
+  
+  <link rel="stylesheet" href="/css/style.css" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css"></noscript>
+  
+
+  <script id="loadcss"></script>
+
+  
+<script>
+if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode))
+    document.write(
+	'<style>'+
+		'html{'+
+			'overflow-x: hidden !important;'+
+			'overflow-y: hidden !important;'+
+		'}'+
+		'.kill-ie{'+
+			'text-align:center;'+
+			'height: 100%;'+
+			'margin-top: 15%;'+
+			'margin-bottom: 5500%;'+
+		'}'+
+	'</style>'+
+    '<div class="kill-ie">'+
+        '<h1><b>抱歉，您的浏览器无法访问本站</b></h1>'+
+        '<h3>微软已经于2016年终止了对 Internet Explorer (IE) 10 及更早版本的支持，<br/>'+
+        '继续使用存在极大的安全隐患，请使用当代主流的浏览器进行访问。</h3><br/>'+
+        '<a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/WindowsForBusiness/End-of-IE-support"><strong>了解详情 ></strong></a>'+
+    '</div>');
+</script>
+
+
+<noscript>
+	<style>
+		html{
+			overflow-x: hidden !important;
+			overflow-y: hidden !important;
+		}
+		.kill-noscript{
+			text-align:center;
+			height: 100%;
+			margin-top: 15%;
+			margin-bottom: 5500%;
+		}
+	</style>
+    <div class="kill-noscript">
+        <h1><b>抱歉，您的浏览器无法访问本站</b></h1>
+        <h3>本页面需要浏览器支持（启用）JavaScript</h3><br/>
+        <a target="_blank" rel="noopener" href="https://www.baidu.com/s?wd=启用JavaScript"><strong>了解详情 ></strong></a>
+    </div>
+</noscript>
+
+</head>
+
+  <body>
+    
+
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
+  <div class='container'>
+  <div id='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a id="s-comment" class="fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a id="s-toc" class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+            <img no-lazy class='logo' src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png'/>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+    <div id="l_body">
+      <div id="l_cover">
+  
+    
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
+          
+            <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg"></div>
+          
+          <div class='cover-body'>
+  <div class='top'>
+    
+    
+      <p class="title">林某的小作坊</p>
+    
+    
+      <p class="subtitle">Stay hungry Stay foolish</p>
+    
+  </div>
+  <div class='bottom'>
+    <div class='menu navigation'>
+      <div class='list-h'>
+        
+          
+            <a href="/v4/getting-started/"
+              
+              
+              id="v4getting-started">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f5c3.svg'><p>文档</p>
+            </a>
+          
+            <a href="https://nikejasonlyz.github.io/studyBlog/"
+              
+              
+              id="https:nikejasonlyzgithubiostudyBlog">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f516.svg'><p>学习</p>
+            </a>
+          
+            <a href="/examples/"
+              
+              
+              id="examples">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f396.svg'><p>示例</p>
+            </a>
+          
+            <a href="/contributors/"
+              
+              
+              id="contributors">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f389.svg'><p>社区</p>
+            </a>
+          
+            <a href="/archives/"
+              
+              
+              id="archives">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4f0.svg'><p>博客</p>
+            </a>
+          
+            <a target="_blank" rel="noopener" href="https://github.com/nikejasonlyz"
+              
+              
+              id="https:githubcomnikejasonlyz">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f9ec.svg'><p>GitHub</p>
+            </a>
+          
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+          <div id="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+        </div>
+    
+  
+  </div>
+
+      <div id="safearea">
+        <div class="body-wrapper" id="pjax-container">
+          
+
+<div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+  <div class="article-meta" id="top">
+    
+    
+    
+      <h1 class="title">
+        vivado学习备忘
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="">
+    <p>Universe</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2021年6月20日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="vivado学习备忘" data-path="/2021/06/20/vivado%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
+        
+      </div>
+    
+  </div>
+
+
+  
+  
+  <h1 id="学习备忘"><a href="#学习备忘" class="headerlink" title="学习备忘"></a>学习备忘</h1><h1 id="FPGA"><a href="#FPGA" class="headerlink" title="FPGA"></a>FPGA</h1><p><strong>EGO1</strong>板卡芯片型号<strong>xc7a35tcsg324-1</strong></p>
+<p>FPGA是现场可编程门阵列（Field-Programmable Gate Array）的缩写，制造后可以更改电路配置。与CPU和GPU等通用集成电路不同，FPGA可以根据应用进行配置，因此在实际应用中，<strong>处理速度比CPU和GPU更快</strong>。由于它是由专用电路处理的，因此可以以较低的消耗实现更高功率。</p>
+<p>要使用CPU或GPU，需将设计的计算算法编写为软件程序（例如C语言）。要使用FPGA，需设计逻辑电路，并使用诸如Verilog之类的硬件描述语言（HDL）编写电路。开发成本高于CPU和GPU的软件描述，因为必须进行电路设计。</p>
+<p><img src="https://pic1.zhimg.com/80/v2-2ee3c40135981a1873ad52acd2874d08_720w.jpg" class="lazyload" data-srcset="https://pic1.zhimg.com/80/v2-2ee3c40135981a1873ad52acd2874d08_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<p>近年来，一种称为<strong>高级综合（HLS）</strong>的电路设计方法引起了人们的关注。在常规的HDL设计中，必须设计具体的电路操作，例如时钟。在HLS设计中，可以通过使用C语言等描述计算算法来设计电路，并且由于不需要设计特定的电路操作，因此可以实现短期开发。另外，它很容易测试，因为它可以使用高度抽象的算法编写。根据某游戏公司硬件开发数据，<strong>HLS设计的开发周期比HDL设计的开发周期短30倍</strong>。</p>
+<p>在本文中，我们将说明如何使用FPGA加速数值计算。解释Xilinx Vivado HLS 的FPGA电路设计和PYNQ的控制程序设计，并解释实现HLS设计性能的优化方法。</p>
+<h2 id="Vivado-HLS"><a href="#Vivado-HLS" class="headerlink" title="Vivado HLS"></a><strong>Vivado HLS</strong></h2><p>Vivado HLS 是一个开发环境，其中包含Xilinx提供的高级综合软件。可以将其视为<strong>将C ++编写的程序转换为HDL中的电路描述（例如Verilog）的编译器</strong>。随附的Vivado是用于设计FPGA电路的电路综合软件。Vivado HLS合成的HDL之类的电路描述由Vivado合成为FPGA电路。与编译器不同，这是电路综合软件，用于排列和连接逻辑电路。其中一些软件是免费提供的，但是本文介绍的所有设计方法都可以使用免费功能实现。</p>
+<h2 id="与非门74LS00的IP核封装设计（74LS00）"><a href="#与非门74LS00的IP核封装设计（74LS00）" class="headerlink" title="与非门74LS00的IP核封装设计（74LS00）"></a>与非门74LS00的IP核封装设计（74LS00）</h2><ol>
+<li>创建工程New Project</li>
+<li>创建或添加设计文件Add Sources</li>
+<li>设计综合Run Synthesis</li>
+<li>设置IP核属性Settings–IP</li>
+<li>封装IP核Tools–Create and Package New IP</li>
+<li>配置IP核参数</li>
+</ol>
+<h2 id="基于原理图的设计实例–全加器-fulladder"><a href="#基于原理图的设计实例–全加器-fulladder" class="headerlink" title="基于原理图的设计实例–全加器(fulladder)"></a>基于原理图的设计实例–全加器(fulladder)</h2><ol>
+<li>创建新工程</li>
+<li>添加IP核文件</li>
+<li>创建原理图，添加IP核，进行原理图设计</li>
+<li>添加引脚约束文件（两种方式）</li>
+<li>设计综合</li>
+<li>设计实现Run Implementation</li>
+<li>生成比特流文件Generate Bitstream</li>
+<li>下载到FPGA</li>
+</ol>
+<h2 id="基于Verilog-HDL的设计实例–流水灯-design-test"><a href="#基于Verilog-HDL的设计实例–流水灯-design-test" class="headerlink" title="基于Verilog HDL的设计实例–流水灯(design_test)"></a>基于Verilog HDL的设计实例–流水灯(design_test)</h2><ol>
+<li>创建新工程</li>
+<li>导入设计文件</li>
+<li>新建仿真源文件</li>
+<li>仿真分析</li>
+<li>添加引脚约束文件（两种方式）</li>
+<li>设计综合</li>
+<li>设计实现Run Implementation</li>
+<li>生成比特流文件Generate Bitstream</li>
+<li>下载到FPGA</li>
+</ol>
+<h2 id="逻辑门电路"><a href="#逻辑门电路" class="headerlink" title="逻辑门电路"></a>逻辑门电路</h2><h3 id="与、或、非、与非、或非、异或、同或门设计"><a href="#与、或、非、与非、或非、异或、同或门设计" class="headerlink" title="与、或、非、与非、或非、异或、同或门设计"></a>与、或、非、与非、或非、异或、同或门设计</h3><h3 id="逻辑门电路的Verilog-HDL设计-gates2"><a href="#逻辑门电路的Verilog-HDL设计-gates2" class="headerlink" title="逻辑门电路的Verilog HDL设计(gates2)"></a>逻辑门电路的Verilog HDL设计(gates2)</h3><h4 id="备注：关于信号的reg型和wire型确定"><a href="#备注：关于信号的reg型和wire型确定" class="headerlink" title="备注：关于信号的reg型和wire型确定"></a>备注：关于信号的reg型和wire型确定</h4><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">端口类型可以是<span class="keyword">wire</span>型或<span class="keyword">reg</span>型，默认为<span class="keyword">wire</span>型。Verilog中，<span class="keyword">wire</span>永远是<span class="keyword">wire</span>，相当于一条连线，用来连接电路，不能存储数据，无驱动能力，是组合逻辑；并只能在<span class="keyword">assign</span>左侧赋值，不能在<span class="keyword">always</span>@中赋值。</span><br><span class="line"><span class="keyword">reg</span>可以综合成register，latch，甚至是<span class="keyword">wire</span>（当其只是中间变量时），能存储数据，有驱动能力，可以用于组合逻辑或者时序逻辑；在<span class="keyword">always</span>@模块表达式左侧被赋值。</span><br></pre></td></tr></table></figure>
+
+<p><strong>小技巧：用always实现的是reg型，其它都是wire型</strong></p>
+<h3 id="与非门的简单运用"><a href="#与非门的简单运用" class="headerlink" title="与非门的简单运用"></a>与非门的简单运用</h3><ol>
+<li>利用与非门实现或门电路（or2）</li>
+<li>四人表决电路(vote_4_1_NAND)</li>
+</ol>
+<h2 id="多路选择器"><a href="#多路选择器" class="headerlink" title="多路选择器"></a>多路选择器</h2><ol>
+<li>2选1多路选择器（MUX21）</li>
+<li>4选1多路选择器（MUX41）</li>
+<li>4位2选1多路选择器（MUX21_4bit）</li>
+<li>通用多路选择器（mux2g）</li>
+</ol>
+<h2 id="74LS253的IP核设计及应用-存在问题"><a href="#74LS253的IP核设计及应用-存在问题" class="headerlink" title="74LS253的IP核设计及应用(存在问题)"></a>74LS253的IP核设计及应用(存在问题)</h2><ol>
+<li>IP核设计(74LS253)</li>
+<li>利用74LS253设计全加器(fulladder_74LS253)</li>
+</ol>
+<h2 id="74LS151的IP核设计（74LS151）"><a href="#74LS151的IP核设计（74LS151）" class="headerlink" title="74LS151的IP核设计（74LS151）"></a>74LS151的IP核设计（74LS151）</h2><h2 id="数值比较器"><a href="#数值比较器" class="headerlink" title="数值比较器"></a>数值比较器</h2><h1 id="PYNQ"><a href="#PYNQ" class="headerlink" title="PYNQ"></a>PYNQ</h1><p>PYNQ是一个开源项目，由一个可以轻松处理Xilinx FPGA的Python库和一个基于Ubuntu的嵌入式映像组成。在本文中，术语PYNQ仅指Python库。通过使用PYNQ，可以仅使用Python描述设计的FPGA电路的控制以及CPU和FPGA之间的数据传输。从嵌入式FPGA SoC到服务器FPGA卡，它可用于多种用途。您可以通过写入将PYNQ<a href="https://link.zhihu.com/?target=http://www.pynq.io/board.html">下载</a>到SD卡上分发的图像文件来使用它。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-96c470cee9306a91a319094cbad70033_720w.jpg" class="lazyload" data-srcset="https://pic4.zhimg.com/80/v2-96c470cee9306a91a319094cbad70033_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>从嵌入式FPGA SoC到AWS上的服务器FPGA卡和云服务，都可以使用PYNQ。撰写本文时，PYNQ的最新版本为2.5.1。本文基于PYNQ-Z1 FPGA板，它是嵌入式FPGA SoC板。PYNQ设置方法在<a href="https://link.zhihu.com/?target=https://pynq.readthedocs.io/en/latest/getting_started/pynq_z1_setup.html">官方文档中</a>有详细介绍，但下面将对其进行简要说明。</p>
+<ol>
+<li>准备PYNQ-Z1。<br>*另外，需要有线LAN电缆和LAN交换机的空端口。</li>
+<li>从<a href="https://link.zhihu.com/?target=http://www.pynq.io/board.html">Download</a>PYNQ下载与您的FPGA板匹配的SD卡映像。</li>
+<li>将下载的图像写入SD卡。<br>*推荐使用<a href="https://link.zhihu.com/?target=https://www.balena.io/etcher/">Etcher</a>，图像写入软件。</li>
+<li>插入SD卡，连接电源线和有线LAN，然后打开FPGA板。</li>
+<li>通过从PC浏览器连接到<a href="https://link.zhihu.com/?target=http://pynq:9090/">http：// pynq：9090 /</a>确保您可以访问Jupyter Notebook。<br>*根据局域网环境，主机名可能无法解析。<br>*在这种情况下，请尝试查找DHCP分配给FPGA板的IP地址。<br>*您可以通过设置http：//：9090 /来访问Jupyter Notebook。</li>
+</ol>
+<h2 id="使用PYNQ进行FPGA设计的概述"><a href="#使用PYNQ进行FPGA设计的概述" class="headerlink" title="使用PYNQ进行FPGA设计的概述"></a><strong>使用PYNQ进行FPGA设计的概述</strong></h2><p><strong>1.确定要加速的目标</strong></p>
+<p>这是最重要的。确定要加快计算速度。在开始使用FPGA设计之前，评估FPGA的计算速度也很重要。在本文中，我们将使用一个加速矩阵乘积的简单示例来说明设计方法。</p>
+<p><strong>2. Vivado HLS的C ++设计</strong></p>
+<p>描述您要使用C ++加快计算速度的操作。此描述称为计算内核。Vivado HLS允许您估计设计的电路性能。在此阶段检查它是否满足要求的性能，如果不满足性能，则需要重新设计计算内核。</p>
+<p><strong>3. Vivado中的合成</strong></p>
+<p>Vivado HLS设计的计算内核使用Vivado合成到FPGA电路中。在此过程中，设计外围电路和时钟信号连接，并设置诸如工作频率之类的参数。对于大型电路设计，用Vivado合成FPGA电路可能要花费数十小时到几天的时间。甚至简单地加快基质产品的合成速度也要花费数十分钟。但是，在许多情况下，此过程很少一次性完成。</p>
+<p><strong>4. PYNQ中的主机描述</strong></p>
+<p>编写一个使用PYNQ控制FPGA电路的主机程序。需要外围程序来调用和使用带有FPGA电路的计算内核。在加速矩阵乘积的示例中，必须读写矩阵数据（例如图像文件），在CPU和FPGA之间传输数据，控制FPGA电路以及验证计算结果。由于PYNQ用Python编写了所有主机程序，因此降低了开发成本，并且易于与现有Python库链接。</p>
+<h2 id="Vivado-HLS的计算内核设计"><a href="#Vivado-HLS的计算内核设计" class="headerlink" title="Vivado HLS的计算内核设计"></a>Vivado HLS的计算内核设计</h2><p><strong>确定目标计算</strong></p>
+<p>从这里开始设计FPGA电路。在本文中，我们将<strong>加速矩阵乘积</strong>，这是一种易于实现的数值计算。还必须确定数值类型和数值计算精度。FPGA的特征之一是可以灵活地更改计算精度，并且可以定义小数精度和具有不同精度的运算。在此实现中，它是一个带符号的16位整数（短型）。下面是用Python的数值计算库Numpy编写的。加速目标<code>y = np.dot(x1, x2)</code>对应于最后一行。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">x1 = np.random.randint(-1000, 1000, size=(16, 16), dtype=np.int16)</span><br><span class="line">x2 = np.random.randint(-1000, 1000, size=(16, 16), dtype=np.int16)</span><br><span class="line"></span><br><span class="line">y = np.dot(x1, x2)</span><br></pre></td></tr></table></figure>
+
+<p><strong>创建一个新的HLS项目</strong></p>
+<ol>
+<li>启动Vivado HLS。<br>在Ubuntu上，<code>$ /tools/Xilinx/Vivado/2020.1/bin/vivado_hls</code>在终端中运行。<br>在Windows上，从应用程序列表中选择Vivado HLS以启动它。</li>
+<li>显示以下屏幕。单击创建新项目。</li>
+</ol>
+<p><img src="https://pic4.zhimg.com/80/v2-947c54b82fdab4593eda183788eb9beb_720w.jpg" class="lazyload" data-srcset="https://pic4.zhimg.com/80/v2-947c54b82fdab4593eda183788eb9beb_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<ol start="3">
+<li>输入项目名称。这次<code>matrix-product</code>，单击下一步。</li>
+</ol>
+<p><img src="https://pic2.zhimg.com/80/v2-b78ffa314c36a9ad8d3998fbfd38ca59_720w.jpg" class="lazyload" data-srcset="https://pic2.zhimg.com/80/v2-b78ffa314c36a9ad8d3998fbfd38ca59_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<ol start="4">
+<li>确定Top Function，它是要综合的C ++函数的名称。选择<code>product</code>，单击下一步。</li>
+</ol>
+<p>从PYNQ库调用内核时，必须使用Top Function中指定的字符串。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-091869548f6a033d857445fec0af6159_720w.jpg" class="lazyload" data-srcset="https://pic2.zhimg.com/80/v2-091869548f6a033d857445fec0af6159_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<ol start="5">
+<li>添加一个测试台。这次不添加任何内容。保留空白，然后单击下一步。</li>
+</ol>
+<p><img src="https://pic2.zhimg.com/80/v2-39dcbebec88c9a61824d68d2cf94b5f9_720w.jpg" class="lazyload" data-srcset="https://pic2.zhimg.com/80/v2-39dcbebec88c9a61824d68d2cf94b5f9_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<ol start="6">
+<li>输入目标FPGA的信息。单击“Part Selection”右侧的[…]，出现选择device。</li>
+</ol>
+<p>对于PYNQ-Z1 ，选择<code>xc7z020clg484-1</code>。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-f410ab8acd29d1149406281dc17101aa_720w.jpg" class="lazyload" data-srcset="https://pic3.zhimg.com/80/v2-f410ab8acd29d1149406281dc17101aa_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<ol start="7">
+<li>单击确定显示所选设备。单击完成以创建项目。</li>
+</ol>
+<p>在“时钟”设置中继续使用默认值。这些设置可以在以后更改。</p>
+<p><img src="https://pic1.zhimg.com/80/v2-547584c9dc4eb69709867129d5eee864_720w.jpg" class="lazyload" data-srcset="https://pic1.zhimg.com/80/v2-547584c9dc4eb69709867129d5eee864_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<p><strong>使用C ++创建计算内核</strong></p>
+<ol>
+<li>创建一个描述内核的C ++文件。右键单击左侧菜单中的“源”，然后选择“新建文件”。</li>
+</ol>
+<p><img src="https://pic4.zhimg.com/80/v2-ba195dd27a59db3cafb08ccbd73fc353_720w.jpg" class="lazyload" data-srcset="https://pic4.zhimg.com/80/v2-ba195dd27a59db3cafb08ccbd73fc353_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<ol start="2">
+<li>将要创建的文件命名为<code>kernel.cpp</code>。文件保存位置没有限制。单击确定。</li>
+</ol>
+<p><img src="https://pic2.zhimg.com/80/v2-e18021865d39655b829ebc96d83556b1_720w.png" class="lazyload" data-srcset="https://pic2.zhimg.com/80/v2-e18021865d39655b829ebc96d83556b1_720w.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<ol start="3">
+<li>把新文件添加到项目中。描述计算内核。请复制下面的示例。<br>编译<code>#pragma HLS XXX...</code>，根据Vivado HLS编译器的说明指示。<br>在此示例中，指定了电路的控制方法（port=return一行）和输入/输出自变量的数据传输方法。<br>不要忘记这些编译指示，因为您将需要这些编译指示来使用PYNQ控制FPGA电路。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">kernel-1.cpp</span><br><span class="line">void product(short x1[16][16], short x2[16][16], short y[16][16]) &#123;</span><br><span class="line">#pragma HLS interface s_axilite port=return</span><br><span class="line">#pragma HLS interface s_axilite port=x1</span><br><span class="line">#pragma HLS interface s_axilite port=x2</span><br><span class="line">#pragma HLS interface s_axilite port=y</span><br><span class="line">    for (int i=0; i&lt;16; i++) &#123;</span><br><span class="line">        for (int j=0; j&lt;16; j++) &#123;</span><br><span class="line">            short t = 0;</span><br><span class="line">            for (int k=0; k&lt;16; k++) &#123;</span><br><span class="line">                t += x1[i][k] * x2[k][j];</span><br><span class="line">            &#125;</span><br><span class="line">            y[i][j] = t;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>HLS综合与报告</strong></p>
+<ol>
+<li>执行HLS综合。顶部图标[▶︎]上的按钮单击C综合。</li>
+</ol>
+<p><img src="https://pic1.zhimg.com/80/v2-b068fef366f36628d123b0b4733e23e8_720w.jpg" class="lazyload" data-srcset="https://pic1.zhimg.com/80/v2-b068fef366f36628d123b0b4733e23e8_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<ol start="2">
+<li>如果显示以下合成报告，则表示合成成功。您可以查看有关合成结果的信息。</li>
+</ol>
+<p>性能评估允许您查看计算内核的性能评估。</p>
+<p>延迟项显示了周期数和执行时间的估计值。</p>
+<p>您可以看到，这次运行计算内核需要8737个时钟周期，这需要87.370微秒。</p>
+<p>如果关闭报告，则可以从顶部图标“打开报告”（C Synthesis的右三）重新打开合成报告。</p>
+<p><img src="https://pic1.zhimg.com/80/v2-906e658ec79041c9ee554af6706d8890_720w.jpg" class="lazyload" data-srcset="https://pic1.zhimg.com/80/v2-906e658ec79041c9ee554af6706d8890_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<ol start="3">
+<li>创建一个IP内核。单击顶部图标上的导出RTL（C综合右侧的第二个）。</li>
+</ol>
+<p>IP内核是一个封装，其中包含电路信息和用于合成FPGA电路的输入/输出数据通信方法。</p>
+<p>它通过IP内核格式来调用Vivado的HLS合成内核。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-76ec546fbe99d1b56e55e7a8b9a7b2b6_720w.png" class="lazyload" data-srcset="https://pic3.zhimg.com/80/v2-76ec546fbe99d1b56e55e7a8b9a7b2b6_720w.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<ol start="4">
+<li>显示“导出RTL”屏幕时，请保留默认设置，然后单击“确定”以创建IP核（IP目录）。</li>
+</ol>
+<p>与Vivado HLS一起使用就可以了。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-6557fee3345d3fbdb11044b2dea90325_720w.jpg" class="lazyload" data-srcset="https://pic2.zhimg.com/80/v2-6557fee3345d3fbdb11044b2dea90325_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<h2 id="使用Vivado进行电路综合"><a href="#使用Vivado进行电路综合" class="headerlink" title="使用Vivado进行电路综合"></a><strong>使用Vivado进行电路综合</strong></h2><p>接下来，创建一个Vivado项目，用于合成FPGA电路。</p>
+<p>在HLS开发中，使用Vivado放置并连接了HLS设计的IP和供应商设计的IP。</p>
+<p><strong>创建一个新的Vivado项目</strong></p>
+<ol>
+<li>启动Vivado。</li>
+<li>创建一个项目。</li>
+</ol>
+<p><img src="https://pic3.zhimg.com/80/v2-7602b128a2dd5028df1121f5a4bac982_720w.jpg" class="lazyload" data-srcset="https://pic3.zhimg.com/80/v2-7602b128a2dd5028df1121f5a4bac982_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<ol start="3">
+<li>显示一下结果，点击下一步。</li>
+</ol>
+<p><img src="../../../../../Downloads/v2-9bacf3bff4c5db8ae7b49d484caaabfc_720w.jpg" class="lazyload" data-srcset="../../../../../Downloads/v2-9bacf3bff4c5db8ae7b49d484caaabfc_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<ol start="4">
+<li>填写以下内容，然后单击“下一步”。</li>
+</ol>
+<p><img src="../../../../../Downloads/v2-305a25e84a2883450d965a0e17e8ba52_720w.jpg" class="lazyload" data-srcset="../../../../../Downloads/v2-305a25e84a2883450d965a0e17e8ba52_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<ol start="5">
+<li>单击“下一步”。</li>
+</ol>
+<p><img src="../../../../../Downloads/v2-d995341776522e0e2b1c3d4cc20feee0_720w.jpg" class="lazyload" data-srcset="../../../../../Downloads/v2-d995341776522e0e2b1c3d4cc20feee0_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<ol start="6">
+<li>单击“下一步”。</li>
+</ol>
+<p><img src="https://pic1.zhimg.com/80/v2-b89be3087e3250283b6015cce717fe0c_720w.jpg" class="lazyload" data-srcset="https://pic1.zhimg.com/80/v2-b89be3087e3250283b6015cce717fe0c_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<ol start="7">
+<li>单击“下一步”。</li>
+</ol>
+<p><img src="https://pic1.zhimg.com/80/v2-781a5779a05371b139770fcaee7cb6ac_720w.jpg" class="lazyload" data-srcset="https://pic1.zhimg.com/80/v2-781a5779a05371b139770fcaee7cb6ac_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<ol start="8">
+<li>在part中选择xc7z020clg484-1，然后单击“下一步”。</li>
+</ol>
+<p><img src="https://pic1.zhimg.com/80/v2-aa58e87e5311de2e6008b8070b38c718_720w.jpg" class="lazyload" data-srcset="https://pic1.zhimg.com/80/v2-aa58e87e5311de2e6008b8070b38c718_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<ol start="9">
+<li>单击完成以创建项目。</li>
+</ol>
+<p><img src="https://pic3.zhimg.com/80/v2-4eb0e5832716af7794b463408d5d0c0a_720w.jpg" class="lazyload" data-srcset="https://pic3.zhimg.com/80/v2-4eb0e5832716af7794b463408d5d0c0a_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<p><strong>IP设计</strong></p>
+<ol>
+<li>创建一个块设计。</li>
+</ol>
+<p>单击“为IP集成器创建模块设计”。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-ad3e6f1f006462c93c6a50e55668d95b_720w.jpg" class="lazyload" data-srcset="https://pic4.zhimg.com/80/v2-ad3e6f1f006462c93c6a50e55668d95b_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<ol start="2">
+<li>单击确定。</li>
+</ol>
+<p><img src="https://pic1.zhimg.com/80/v2-4ac5d666d853c05c59df1be318dff3e8_720w.jpg" class="lazyload" data-srcset="https://pic1.zhimg.com/80/v2-4ac5d666d853c05c59df1be318dff3e8_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<ol start="3">
+<li>添加由Vivado HLS创建的IP内核。</li>
+</ol>
+<p>从顶部的齿轮图标打开设置。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-0edad4ae245e182e7a7768b82df91851_720w.png" class="lazyload" data-srcset="https://pic2.zhimg.com/80/v2-0edad4ae245e182e7a7768b82df91851_720w.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<ol start="4">
+<li>打开“ IP存储库”选项卡，然后单击“添加”按钮。</li>
+</ol>
+<p><img src="https://pic3.zhimg.com/80/v2-8fbaf78f8958785ae9a1d285f95c49a2_720w.jpg" class="lazyload" data-srcset="https://pic3.zhimg.com/80/v2-8fbaf78f8958785ae9a1d285f95c49a2_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<ol start="5">
+<li>选择在HLS设计中创建的项目。</li>
+</ol>
+<p><img src="https://pic3.zhimg.com/80/v2-62765711e4087b3b82e0d69722a49fa2_720w.jpg" class="lazyload" data-srcset="https://pic3.zhimg.com/80/v2-62765711e4087b3b82e0d69722a49fa2_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<ol start="6">
+<li>如图显示，有一个可被识别的HLS设计的IP。</li>
+</ol>
+<p><img src="https://pic3.zhimg.com/80/v2-4161b5481155dcf4b22b5ea8d4a554ee_720w.jpg" class="lazyload" data-srcset="https://pic3.zhimg.com/80/v2-4161b5481155dcf4b22b5ea8d4a554ee_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<ol start="7">
+<li>单击确定关闭设置。</li>
+</ol>
+<p><img src="https://pic1.zhimg.com/80/v2-217713c00183591ca56473079b8b0b58_720w.jpg" class="lazyload" data-srcset="https://pic1.zhimg.com/80/v2-217713c00183591ca56473079b8b0b58_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<ol start="8">
+<li>添加IP内核以识别硬核ARM CPU。</li>
+</ol>
+<p>从图中的加号按钮，选择ZYNQ，如图所示。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-6e634477683550557cd246a9273cac71_720w.jpg" class="lazyload" data-srcset="https://pic2.zhimg.com/80/v2-6e634477683550557cd246a9273cac71_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<ol start="9">
+<li>同样，添加HLS设计的IP。</li>
+</ol>
+<p>它是Product，与HLS的功能名称相同。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-532b57a13f66305fad26c5ae872e3e3f_720w.jpg" class="lazyload" data-srcset="https://pic4.zhimg.com/80/v2-532b57a13f66305fad26c5ae872e3e3f_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<ol start="10">
+<li>运行两种类型的自动化。</li>
+</ol>
+<p><img src="https://pic3.zhimg.com/80/v2-2d1b2b1654aa307a628dd9eec3541baa_720w.jpg" class="lazyload" data-srcset="https://pic3.zhimg.com/80/v2-2d1b2b1654aa307a628dd9eec3541baa_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<ol start="11">
+<li>执行验证以确保没有错误。</li>
+</ol>
+<p><img src="https://pic4.zhimg.com/80/v2-c178f28ac35d4804317cd21176f094b7_720w.jpg" class="lazyload" data-srcset="https://pic4.zhimg.com/80/v2-c178f28ac35d4804317cd21176f094b7_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<p><img src="https://pic1.zhimg.com/80/v2-2e47b67169f40886835d82b01d7e45a4_720w.jpg" class="lazyload" data-srcset="https://pic1.zhimg.com/80/v2-2e47b67169f40886835d82b01d7e45a4_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<ol start="12">
+<li>最后，创建包装RTL。</li>
+</ol>
+<p><img src="https://pic3.zhimg.com/80/v2-79f59746d05da266323d3e29b9d5dd46_720w.jpg" class="lazyload" data-srcset="https://pic3.zhimg.com/80/v2-79f59746d05da266323d3e29b9d5dd46_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<p><img src="https://pic3.zhimg.com/80/v2-ed457653963d3d1148f76b03f417714e_720w.jpg" class="lazyload" data-srcset="https://pic3.zhimg.com/80/v2-ed457653963d3d1148f76b03f417714e_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<p><strong>电路综合与可交付成果</strong></p>
+<ol>
+<li>执行电路综合。合成需要数十分钟。</li>
+</ol>
+<p>单击左侧菜单上的“生成位流”，然后在弹出窗口中单击“确定”。</p>
+<p><img src="https://pic1.zhimg.com/80/v2-11c2f27425b84e6f4932910c0bf64f30_720w.jpg" class="lazyload" data-srcset="https://pic1.zhimg.com/80/v2-11c2f27425b84e6f4932910c0bf64f30_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<ol start="2">
+<li>.Bit和.hwh文件是综合的结果。</li>
+</ol>
+<p>通过从Finder打开Vivado项目目录并按文件名搜索，可以轻松找到它。</p>
+<p>将其复制到任意目录。</p>
+<p>这就是<strong>在Vivado环境中的全部工作</strong>。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-e8bb77031ed2a7c132e2b97d5c54a20a_720w.jpg" class="lazyload" data-srcset="https://pic3.zhimg.com/80/v2-e8bb77031ed2a7c132e2b97d5c54a20a_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<p><img src="https://pic3.zhimg.com/80/v2-30f79f9e692826977099c82fc5241f4a_720w.jpg" class="lazyload" data-srcset="https://pic3.zhimg.com/80/v2-30f79f9e692826977099c82fc5241f4a_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<p><img src="https://pic4.zhimg.com/80/v2-1f09f9a538f839fc4cad65cad8550077_720w.jpg" class="lazyload" data-srcset="https://pic4.zhimg.com/80/v2-1f09f9a538f839fc4cad65cad8550077_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<h2 id="用PYNQ编写主机程序"><a href="#用PYNQ编写主机程序" class="headerlink" title="用PYNQ编写主机程序"></a><strong>用PYNQ编写主机程序</strong></h2><p>接下来，编写控制FPGA电路的主机程序。</p>
+<p>实际在FPGA上执行数值计算。</p>
+<p><strong>创建Jupyter Notebook并编写主机程序</strong></p>
+<ol>
+<li>从PC浏览器登录到Jupyter Notebook。默认密码是xilinx。</li>
+</ol>
+<p><img src="../../../../../Downloads/v2-a02f5757c761c9c5566b57cee5559b8f_720w.jpg" class="lazyload" data-srcset="../../../../../Downloads/v2-a02f5757c761c9c5566b57cee5559b8f_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<ol start="2">
+<li>创建一个工作目录并转到创建的目录。</li>
+</ol>
+<p><img src="../../../../../Downloads/v2-4ee4ee2745a0588fb7ed7702c3717fea_720w.jpg" class="lazyload" data-srcset="../../../../../Downloads/v2-4ee4ee2745a0588fb7ed7702c3717fea_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<ol start="3">
+<li>上载design_1_wrapper.bit和design_1.hwh。</li>
+</ol>
+<p>将design_1_wrapper.bit重命名为design_1.bit。</p>
+<p><img src="../../../../../Downloads/v2-32593ae1ed8ef7ba24b1eab73aae09e4_720w.jpg" class="lazyload" data-srcset="../../../../../Downloads/v2-32593ae1ed8ef7ba24b1eab73aae09e4_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<ol start="4">
+<li>创建一个新的笔记本。</li>
+</ol>
+<p><img src="../../../../../Downloads/v2-d0dbca1811df992788b6139050528601_720w.jpg" class="lazyload" data-srcset="../../../../../Downloads/v2-d0dbca1811df992788b6139050528601_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<ol start="5">
+<li>编写并执行以下示例程序1。</li>
+</ol>
+<p>请复制并粘贴到文本区域。</p>
+<p>单击运行或按Shift + Enter运行。</p>
+<p>使用Jupyter Notebook，通过<code>%time</code>可以轻松地测量处理速度。</p>
+<p><img src="../../../../../Downloads/v2-c08b2620c7769a24edf7d92999725ab4_720w.jpg" class="lazyload" data-srcset="../../../../../Downloads/v2-c08b2620c7769a24edf7d92999725ab4_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<p><img src="../../../../../Downloads/v2-bec616c16acd44d33b120d4820426584_720w.jpg" class="lazyload" data-srcset="../../../../../Downloads/v2-bec616c16acd44d33b120d4820426584_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pynq</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># 通过PYNQ写入合成电路到FPGA</span></span><br><span class="line">ol = pynq.Overlay(<span class="string">&#x27;./design_1.bit&#x27;</span>)</span><br><span class="line">mmio = ol.product_0.mmio</span><br><span class="line"></span><br><span class="line"><span class="comment"># 通过Memory Mapped I/O, 用Numpy接口访问AXI LITE寄存器</span></span><br><span class="line"><span class="comment"># Numpy的访问带宽为32 bit整数，将所述地址的32位/ 8位（1字节）= 4 计算</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">ndarray_from_mmio</span>(<span class="params">name, size, dtype</span>):</span></span><br><span class="line">    reginfo = ol.ip_dict[<span class="string">&#x27;product_0&#x27;</span>][<span class="string">&#x27;registers&#x27;</span>][name]</span><br><span class="line">    addr_start = reginfo[<span class="string">&#x27;address_offset&#x27;</span>] // <span class="number">4</span></span><br><span class="line">    addr_end = addr_start + reginfo[<span class="string">&#x27;size&#x27;</span>] // <span class="number">4</span></span><br><span class="line">    mmio_array = mmio.array[addr_start:addr_end]</span><br><span class="line">    mmio_array.dtype = np.int16</span><br><span class="line">    <span class="keyword">return</span> mmio_array.reshape(size)</span><br><span class="line"></span><br><span class="line">mmio_x1 = ndarray_from_mmio(<span class="string">&#x27;Memory_x1&#x27;</span>, size=(<span class="number">16</span>, <span class="number">16</span>), dtype=np.int16)</span><br><span class="line">mmio_x2 = ndarray_from_mmio(<span class="string">&#x27;Memory_x2&#x27;</span>, size=(<span class="number">16</span>, <span class="number">16</span>), dtype=np.int16)</span><br><span class="line">mmio_y1 = ndarray_from_mmio(<span class="string">&#x27;Memory_y&#x27;</span>, size=(<span class="number">16</span>, <span class="number">16</span>), dtype=np.int16)</span><br><span class="line"></span><br><span class="line">DONE = <span class="number">0x02</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mydot</span>(<span class="params">x1: np.ndarray, x2: np.ndarray</span>) -&gt; np.ndarray:</span></span><br><span class="line">    <span class="comment"># 写输入数据</span></span><br><span class="line">    mmio_x1[:] = x1</span><br><span class="line">    mmio_x2[:] = x2</span><br><span class="line">    <span class="comment"># 表示电路运行的开始</span></span><br><span class="line">    mmio.write(<span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line">    <span class="comment"># 等待电路运行结束</span></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">not</span> mmio.read(<span class="number">0</span>) &amp; DONE: <span class="keyword">pass</span></span><br><span class="line">    <span class="comment"># 返回结果</span></span><br><span class="line">    <span class="keyword">return</span> mmio_y1.copy()</span><br><span class="line"></span><br><span class="line">x1 = np.random.randint(-<span class="number">1000</span>, <span class="number">1000</span>, size=(<span class="number">16</span>, <span class="number">16</span>), dtype=np.int16)</span><br><span class="line">x2 = np.random.randint(-<span class="number">1000</span>, <span class="number">1000</span>, size=(<span class="number">16</span>, <span class="number">16</span>), dtype=np.int16)</span><br><span class="line"></span><br><span class="line">y_true = np.dot(x1, x2)</span><br><span class="line">y_test = mydot(x1, x2)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Validation:&#x27;</span>, np.<span class="built_in">all</span>(y_true == y_test))</span><br><span class="line"><span class="built_in">print</span>()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;=&gt; Running 1000 times on CPU&#x27;</span>)</span><br><span class="line">%time <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1000</span>): _ = np.dot(x1, x2)</span><br><span class="line"><span class="built_in">print</span>()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;=&gt; Running 1000 times on FPGA&#x27;</span>)</span><br><span class="line">%time <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1000</span>): _ = mydot(x1, x2)</span><br></pre></td></tr></table></figure>
+
+<p><strong>思考</strong></p>
+<p>此时，FPGA处理比CPU处理慢。<br>可能的原因包括：</p>
+<ol>
+<li>传输很慢。对于输入/输出数据的传输，通过使用内存映射IO的CPU控制来实现AXI Lite协议。AXI流协议是一种更快的传输方法。<br>AXI流支持连续的存储器访问，并允许从FPGA直接访问DRAM以进行高速数据传输。</li>
+<li>Overhead很大。<br>这次的加速功能是16x16的矩阵乘积，并且计算量最初并不是很大。<br>这种规模的计算主要受overhead的支配，该overhead被卸载至FPGA。</li>
+<li>电路未并行化。<br>在此设计中没有进行并行化。运行在1000MHz左右的CPU显然比运行在100MHz的非并行FPGA电路要快。</li>
+</ol>
+<h2 id="进一步优化"><a href="#进一步优化" class="headerlink" title="进一步优化"></a>进一步优化</h2><p>到目前为止，我们已经解释了使用PYNQ的FPGA电路HLS设计的基础。</p>
+<p>从这里，我将解释如何进一步加快此实现。</p>
+<p><strong>Vivado HLS版</strong></p>
+<p>下面是已并行化的示例代码。<br>为了加快速度，我对目标计算进行了一些更改。<br>计算N×16和16×16矩阵。<br>进行计算更改以消除控制overhead问题。</p>
+<p>在HLS实现中，编译指示用于支持电路的并行设计。<br><code>#pragma HLS PIPELINE, UNROLL, ARRAY_PARTITION</code>等等。<br>此处省略了编译指示的详细操作。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;ap_int.h&gt;</span></span><br><span class="line"><span class="comment">#include &lt;hls_stream.h&gt;</span></span><br><span class="line"></span><br><span class="line">struct DataBus &#123;</span><br><span class="line">    ap_int&lt;<span class="number">256</span>&gt; data;</span><br><span class="line">    ap_uint&lt;<span class="number">1</span>&gt; last;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">void product(short w[<span class="number">16</span>][<span class="number">16</span>], hls::stream&lt;DataBus&gt; &amp;x, hls::stream&lt;DataBus&gt; &amp;y) &#123;</span><br><span class="line"><span class="comment">#pragma HLS INTERFACE s_axilite port=return</span></span><br><span class="line"><span class="comment">#pragma HLS INTERFACE s_axilite port=w</span></span><br><span class="line"><span class="comment">#pragma HLS INTERFACE axis port=x</span></span><br><span class="line"><span class="comment">#pragma HLS INTERFACE axis port=y</span></span><br><span class="line"><span class="comment">#pragma HLS ARRAY_PARTITION variable=w dim=0</span></span><br><span class="line">    <span class="keyword">while</span> (true) &#123;</span><br><span class="line"><span class="comment">#pragma HLS pipeline</span></span><br><span class="line">        short xx[<span class="number">16</span>];</span><br><span class="line"><span class="comment">#pragma HLS ARRAY_PARTITION variable=xx</span></span><br><span class="line">        short yy[<span class="number">16</span>];</span><br><span class="line"><span class="comment">#pragma HLS ARRAY_PARTITION variable=yy</span></span><br><span class="line">        // read <span class="built_in">input</span> data</span><br><span class="line">        DataBus src = x.read();</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i=<span class="number">0</span>; i&lt;<span class="number">16</span>; i++) xx[i] = short(src.data &gt;&gt; <span class="number">16</span>*i);</span><br><span class="line">        // matrix product</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> j=<span class="number">0</span>; j&lt;<span class="number">16</span>; j++) &#123;</span><br><span class="line"><span class="comment">#pragma HLS UNROLL</span></span><br><span class="line">            short t = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="built_in">int</span> k=<span class="number">0</span>; k&lt;<span class="number">16</span>; k++) t += xx[k] * w[k][j];</span><br><span class="line">            yy[j] = t;</span><br><span class="line">        &#125;</span><br><span class="line">        // write output</span><br><span class="line">        DataBus dst;</span><br><span class="line">        dst.data = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i=<span class="number">0</span>; i&lt;<span class="number">16</span>; i++) dst.data |= ap_uint&lt;<span class="number">256</span>&gt;(yy[i]) &lt;&lt; <span class="number">16</span>*i;</span><br><span class="line">        dst.last = src.last;</span><br><span class="line">        y.write(dst);</span><br><span class="line">        <span class="keyword">if</span> (src.last) <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>另外，我们需要更改时钟频率以提高速度。</p>
+<p>但是，它的速度无法达到与CPU一样快，PYNQ-Z1板大约需要200MHz。</p>
+<p>您可以按照以下步骤更改目标时钟频率。</p>
+<p>指定周期（200MHz =&gt; 5ns）而不是频率。</p>
+<p><img src="../../../../../Downloads/v2-b442591e61dbcef888ea361cbe1d5468_720w.jpg" class="lazyload" data-srcset="../../../../../Downloads/v2-b442591e61dbcef888ea361cbe1d5468_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<p><img src="../../../../../Downloads/v2-94329a9386be5c1bd84a8615a81ba7fc_720w.jpg" class="lazyload" data-srcset="../../../../../Downloads/v2-94329a9386be5c1bd84a8615a81ba7fc_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<p><img src="../../../../../Downloads/v2-ec898dd7a66a9c17952cfc52b827de74_720w.jpg" class="lazyload" data-srcset="../../../../../Downloads/v2-ec898dd7a66a9c17952cfc52b827de74_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<p>最后，使用三角形按钮合成HLS。</p>
+<p>另外，不要忘记导出IP内核。</p>
+<p><strong>Vivado</strong></p>
+<p>使用AXI Stream实现通信。</p>
+<p>在模块设计中添加DMA。</p>
+<p>将布线拖放</p>
+<p>时钟频率更改为200MHz。</p>
+<p>我将省略详细说明，但是如果您如图所示继续进行，则将完成块设计。</p>
+<p><img src="../../../../../Downloads/v2-3a9bc264c8d63212096d078a9f458f24_720w.jpg" class="lazyload" data-srcset="../../../../../Downloads/v2-3a9bc264c8d63212096d078a9f458f24_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<p><img src="../../../../../Downloads/v2-00c6c5c690d798d73f7b26d77d3c9899_720w.jpg" class="lazyload" data-srcset="../../../../../Downloads/v2-00c6c5c690d798d73f7b26d77d3c9899_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<p><img src="../../../../../Downloads/v2-28d9add40d9720d92078754d376daefa_720w.jpg" class="lazyload" data-srcset="../../../../../Downloads/v2-28d9add40d9720d92078754d376daefa_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<p><img src="../../../../../Downloads/v2-c843edd959aa091ffec5f44db82fa308_720w.jpg" class="lazyload" data-srcset="../../../../../Downloads/v2-c843edd959aa091ffec5f44db82fa308_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<p><img src="../../../../../Downloads/v2-11b43b0fd921ff7b6d2bf7e8aac686fe_720w.jpg" class="lazyload" data-srcset="../../../../../Downloads/v2-11b43b0fd921ff7b6d2bf7e8aac686fe_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<p><img src="../../../../../Downloads/v2-9c09e1c00ce6e37a9891683bca3b59d2_720w.jpg" class="lazyload" data-srcset="../../../../../Downloads/v2-9c09e1c00ce6e37a9891683bca3b59d2_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<p><img src="../../../../../Downloads/v2-b22b240a186ea7fe3a5cc0eb8ff6784c_720w.jpg" class="lazyload" data-srcset="../../../../../Downloads/v2-b22b240a186ea7fe3a5cc0eb8ff6784c_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<p><img src="../../../../../Downloads/v2-c6aec0f211fb1618b44efa9d0ff4de48_720w.jpg" class="lazyload" data-srcset="../../../../../Downloads/v2-c6aec0f211fb1618b44efa9d0ff4de48_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<p><img src="../../../../../Downloads/v2-7232cc77a8b7fec735cecd6b2a4866da_720w.jpg" class="lazyload" data-srcset="../../../../../Downloads/v2-7232cc77a8b7fec735cecd6b2a4866da_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<p><img src="../../../../../Downloads/v2-9000dec04507898127e33d90b9e374a2_720w.jpg" class="lazyload" data-srcset="../../../../../Downloads/v2-9000dec04507898127e33d90b9e374a2_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<p><img src="../../../../../Downloads/v2-10f4b70dd5d4c2eec8c8e5ba401457d5_720w.jpg" class="lazyload" data-srcset="../../../../../Downloads/v2-10f4b70dd5d4c2eec8c8e5ba401457d5_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<p><img src="../../../../../Downloads/v2-9000dec04507898127e33d90b9e374a2_720w.jpg" class="lazyload" data-srcset="../../../../../Downloads/v2-9000dec04507898127e33d90b9e374a2_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<p><img src="../../../../../Downloads/v2-efd06c652caa4285d267151d3dc6ef91_720w.jpg" class="lazyload" data-srcset="../../../../../Downloads/v2-efd06c652caa4285d267151d3dc6ef91_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<p><img src="../../../../../Downloads/v2-abba60f442c39efd709cd3eb924589d2_720w.jpg" class="lazyload" data-srcset="../../../../../Downloads/v2-abba60f442c39efd709cd3eb924589d2_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<p><img src="../../../../../Downloads/v2-07e2f224077fb428ac9be68699798563_720w.jpg" class="lazyload" data-srcset="../../../../../Downloads/v2-07e2f224077fb428ac9be68699798563_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<p><img src="../../../../../Downloads/v2-8be1e2925ce4a4560e03adc7d24b1971_720w.jpg" class="lazyload" data-srcset="../../../../../Downloads/v2-8be1e2925ce4a4560e03adc7d24b1971_720w.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<p>合成模块设计后，从Generate Bitstream开始合成。</p>
+<p>如上例所示，复制.bit和.hwh文件，然后通过浏览器将它们上传到FPGA。</p>
+<p>文件名应分别为design_2.bit和design_2.hwh。</p>
+<p><strong>PYNQ主机版</strong></p>
+<p>支持DMA传输的主机程序。</p>
+<p>请复制并执行。</p>
+<p>FPGA的速度大约是CPU的3倍。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pynq</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 通过PYNQ将合成电路写入FPGA中</span></span><br><span class="line">ol = pynq.Overlay(<span class="string">&#x27;./design_2.bit&#x27;</span>)</span><br><span class="line">mmio = ol.product_0.mmio</span><br><span class="line"></span><br><span class="line"><span class="comment"># pragma HLS array_partition的影响更改地址配置</span></span><br><span class="line"><span class="comment"># 通过programa进行适当更改</span></span><br><span class="line"><span class="comment"># 地址在Vivado HLS的 Solution&gt;Impl&gt;misc&gt;Drivers&gt;src&gt;xxx_hw.h中可见</span></span><br><span class="line">mmio_w = mmio.array[<span class="number">0x010</span>//<span class="number">4</span>:<span class="number">0x810</span>//<span class="number">4</span>]</span><br><span class="line">mmio_w.dtype = np.int16</span><br><span class="line">mmio_w = mmio_w.reshape(<span class="number">16</span>, <span class="number">16</span>, <span class="number">4</span>)[:,:,<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用AXI DMA进行存储器传输</span></span><br><span class="line">dma_x = ol.axi_dma_0.sendchannel</span><br><span class="line">dma_y = ol.axi_dma_0.recvchannel</span><br><span class="line"></span><br><span class="line"><span class="comment"># 处理大量数据</span></span><br><span class="line">N = <span class="number">30000</span></span><br><span class="line"></span><br><span class="line">buff_x = pynq.allocate(shape=(N,<span class="number">16</span>), dtype=np.int16)</span><br><span class="line">buff_y = pynq.allocate(shape=(N,<span class="number">16</span>), dtype=np.int16)</span><br><span class="line"></span><br><span class="line">DONE = <span class="number">0x02</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mydot</span>(<span class="params">x: np.ndarray</span>) -&gt; np.ndarray:</span></span><br><span class="line">    <span class="comment"># 写入输入数据</span></span><br><span class="line">    buff_x[:] = x</span><br><span class="line">    <span class="comment"># 启动DMA传输</span></span><br><span class="line">    dma_x.transfer(buff_x)</span><br><span class="line">    dma_y.transfer(buff_y)</span><br><span class="line">    <span class="comment"># 电路操作的开始</span></span><br><span class="line">    mmio.write(<span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line">    <span class="comment"># 等待电路操作结束</span></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">not</span> mmio.read(<span class="number">0</span>) &amp; DONE: <span class="keyword">pass</span></span><br><span class="line">    <span class="comment"># 返回结果</span></span><br><span class="line">    <span class="keyword">return</span> buff_y.copy()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">x = np.random.randint(-<span class="number">1000</span>, <span class="number">1000</span>, size=(N, <span class="number">16</span>), dtype=np.int16)</span><br><span class="line">w = np.random.randint(-<span class="number">1000</span>, <span class="number">1000</span>, size=(<span class="number">16</span>, <span class="number">16</span>), dtype=np.int16)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 写入固定参数</span></span><br><span class="line">mmio_w[:] = w</span><br><span class="line"></span><br><span class="line"><span class="comment"># 写入Clock频率</span></span><br><span class="line">pynq.Clocks.fclk0_mhz = <span class="number">200</span></span><br><span class="line"></span><br><span class="line">y_true = np.dot(x, w)</span><br><span class="line">y_test = mydot(x)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Validation:&#x27;</span>, np.<span class="built_in">all</span>(y_true == y_test))</span><br><span class="line"><span class="built_in">print</span>()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;=&gt; Running on CPU&#x27;</span>)</span><br><span class="line">%time _ = np.dot(x, w)</span><br><span class="line"><span class="built_in">print</span>()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;=&gt; Running on FPGA&#x27;</span>)</span><br><span class="line">%time _ = mydot(x)</span><br></pre></td></tr></table></figure>
+
+<p>PYNQ库具有Python overhead，因此</p>
+<p>如果每秒超过100次，则由Python引起的延迟将成为问题。</p>
+<p>在示例中，直接访问mmio.array以提高速度，但是</p>
+<p>PYNQ库实际上建议使用mmio.write方法进行读取和写入。</p>
+<p>如果您不注意内存校准，Ubuntu将崩溃。</p>
+<p>同样，例如dma的.transfer（）是高overhead的处理过程。</p>
+<p>可以通过直接访问内存来消除这种overhead（示例中没有说明）。</p>
+
+  
+  
+    
+    <div class='footer'>
+      
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://nikejasonlyz.github.io/2021/06/20/vivado%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/>http://nikejasonlyz.github.io/2021/06/20/vivado%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</a></p>
+              
+            
+          </blockquote>
+        </div>
+      
+      
+    </div>
+  
+  
+    
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-06-20T17:13:21+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2021年6月20日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/vivado/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>vivado</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://nikejasonlyz.github.io/2021/06/20/vivado%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/&title=vivado学习备忘 - 林某の小作坊&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://nikejasonlyz.github.io/2021/06/20/vivado%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/&title=vivado学习备忘 - 林某の小作坊&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://nikejasonlyz.github.io/2021/06/20/vivado%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/&title=vivado学习备忘 - 林某の小作坊&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/2019/11/17/%E5%8D%81%E4%B8%80%E6%9C%88/'>
+          <p class='title'>十一月<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>这个月故事可不少学习时间更紧凑了，自发地有了没事就去图书馆的想法，故而，此刻晚七点，巩固完知识，左手放着还在散发余热的iPad，打开电脑，更新许久未触碰的博客
+华为我太爱了，于是买了HUAWEI...</p>
+        </a>
+      
+    </div>
+  
+</article>
+
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+  </article>
+
+
+
+
+
+
+</div>
+<aside class='l_side'>
+  
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Vivado-HLS"><span class="toc-text">Vivado HLS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8E%E9%9D%9E%E9%97%A874LS00%E7%9A%84IP%E6%A0%B8%E5%B0%81%E8%A3%85%E8%AE%BE%E8%AE%A1%EF%BC%8874LS00%EF%BC%89"><span class="toc-text">与非门74LS00的IP核封装设计（74LS00）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E5%8E%9F%E7%90%86%E5%9B%BE%E7%9A%84%E8%AE%BE%E8%AE%A1%E5%AE%9E%E4%BE%8B%E2%80%93%E5%85%A8%E5%8A%A0%E5%99%A8-fulladder"><span class="toc-text">基于原理图的设计实例–全加器(fulladder)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8EVerilog-HDL%E7%9A%84%E8%AE%BE%E8%AE%A1%E5%AE%9E%E4%BE%8B%E2%80%93%E6%B5%81%E6%B0%B4%E7%81%AF-design-test"><span class="toc-text">基于Verilog HDL的设计实例–流水灯(design_test)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E9%97%A8%E7%94%B5%E8%B7%AF"><span class="toc-text">逻辑门电路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8E%E3%80%81%E6%88%96%E3%80%81%E9%9D%9E%E3%80%81%E4%B8%8E%E9%9D%9E%E3%80%81%E6%88%96%E9%9D%9E%E3%80%81%E5%BC%82%E6%88%96%E3%80%81%E5%90%8C%E6%88%96%E9%97%A8%E8%AE%BE%E8%AE%A1"><span class="toc-text">与、或、非、与非、或非、异或、同或门设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E9%97%A8%E7%94%B5%E8%B7%AF%E7%9A%84Verilog-HDL%E8%AE%BE%E8%AE%A1-gates2"><span class="toc-text">逻辑门电路的Verilog HDL设计(gates2)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%87%E6%B3%A8%EF%BC%9A%E5%85%B3%E4%BA%8E%E4%BF%A1%E5%8F%B7%E7%9A%84reg%E5%9E%8B%E5%92%8Cwire%E5%9E%8B%E7%A1%AE%E5%AE%9A"><span class="toc-text">备注：关于信号的reg型和wire型确定</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8E%E9%9D%9E%E9%97%A8%E7%9A%84%E7%AE%80%E5%8D%95%E8%BF%90%E7%94%A8"><span class="toc-text">与非门的简单运用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E8%B7%AF%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-text">多路选择器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#74LS253%E7%9A%84IP%E6%A0%B8%E8%AE%BE%E8%AE%A1%E5%8F%8A%E5%BA%94%E7%94%A8-%E5%AD%98%E5%9C%A8%E9%97%AE%E9%A2%98"><span class="toc-text">74LS253的IP核设计及应用(存在问题)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#74LS151%E7%9A%84IP%E6%A0%B8%E8%AE%BE%E8%AE%A1%EF%BC%8874LS151%EF%BC%89"><span class="toc-text">74LS151的IP核设计（74LS151）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%80%BC%E6%AF%94%E8%BE%83%E5%99%A8"><span class="toc-text">数值比较器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83"><span class="toc-text">环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8PYNQ%E8%BF%9B%E8%A1%8CFPGA%E8%AE%BE%E8%AE%A1%E7%9A%84%E6%A6%82%E8%BF%B0"><span class="toc-text">使用PYNQ进行FPGA设计的概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vivado-HLS%E7%9A%84%E8%AE%A1%E7%AE%97%E5%86%85%E6%A0%B8%E8%AE%BE%E8%AE%A1"><span class="toc-text">Vivado HLS的计算内核设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Vivado%E8%BF%9B%E8%A1%8C%E7%94%B5%E8%B7%AF%E7%BB%BC%E5%90%88"><span class="toc-text">使用Vivado进行电路综合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8PYNQ%E7%BC%96%E5%86%99%E4%B8%BB%E6%9C%BA%E7%A8%8B%E5%BA%8F"><span class="toc-text">用PYNQ编写主机程序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E4%B8%80%E6%AD%A5%E4%BC%98%E5%8C%96"><span class="toc-text">进一步优化</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+		  
+		  <!--此文件用来存放一些不方便取值的变量-->
+<!--思路大概是将值藏到重加载的区域内-->
+
+<script>
+  window.pdata={}
+  pdata.ispage=true;
+  pdata.postTitle="vivado学习备忘";
+  pdata.commentPath="";
+  pdata.commentPlaceholder="";
+  // header 这里无论是否开启pjax都需要
+  var l_header=document.getElementById("l_header");
+  
+  l_header.classList.add("show");
+  
+  
+    // cover
+    var cover_wrapper=document.querySelector('.cover-wrapper');
+    
+    cover_wrapper.id="none";
+    cover_wrapper.style.display="none";
+    
+  
+</script>
+
+        </div>
+        
+  
+  <footer class="footer clearfix">
+    <br><br>
+    
+      
+        <div class="aplayer-container">
+          
+
+
+        </div>
+      
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+          
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        
+          <div><p><span id="lc-sv">本站总访问量为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span> <span id="lc-uv">访客数为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span></p>
+</div>
+        
+      
+    
+      
+        本站使用
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/4.3.1" target="_blank" class="codename">Volantis</a>
+        作为主题
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2017-2020 XXX</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+        <a id="s-top" class="fas fa-arrow-up fa-fw" href="javascript:void(0)"></a>
+      </div>
+    </div>
+    <div>
+      <script>
+/************这个文件存放不需要重载的全局变量和全局函数*********/
+window.volantis={};
+window.volantis.loadcss=document.getElementById("loadcss");
+/******************** Pjax ********************************/
+function VPjax(){
+	this.list=[] // 存放回调函数
+	this.start=()=>{
+	  for(var i=0;i<this.list.length;i++){
+		this.list[i].run();
+	  }
+	}
+	this.push=(fn,name)=>{
+		var f=new PjaxItem(fn,name);
+		this.list.push(f);
+	}
+	// 构造一个可以run的对象
+	function PjaxItem(fn,name){
+		// 函数名称
+		this.name = name || fn.name
+		// run方法
+		this.run=()=>{
+			fn()
+		}
+	}
+}
+volantis.pjax={}
+volantis.pjax.method={
+	complete: new VPjax(),
+	error: new VPjax(),
+	send: new VPjax()
+}
+volantis.pjax={
+	...volantis.pjax,
+	push: volantis.pjax.method.complete.push,
+	error: volantis.pjax.method.error.push,
+	send: volantis.pjax.method.send.push
+}
+/********************脚本懒加载函数********************************/
+// 已经加入了setTimeout
+function loadScript(src, cb) {
+	setTimeout(function() {
+		var HEAD = document.getElementsByTagName('head')[0] || document.documentElement;
+		var script = document.createElement('script');
+		script.setAttribute('type','text/javascript');
+		if (cb) script.onload = cb;
+		script.setAttribute('src', src);
+		HEAD.appendChild(script);
+	});
+}
+//https://github.com/filamentgroup/loadCSS
+var loadCSS = function( href, before, media, attributes ){
+	var doc = window.document;
+	var ss = doc.createElement( "link" );
+	var ref;
+	if( before ){
+		ref = before;
+	}
+	else {
+		var refs = ( doc.body || doc.getElementsByTagName( "head" )[ 0 ] ).childNodes;
+		ref = refs[ refs.length - 1];
+	}
+	var sheets = doc.styleSheets;
+	if( attributes ){
+		for( var attributeName in attributes ){
+			if( attributes.hasOwnProperty( attributeName ) ){
+				ss.setAttribute( attributeName, attributes[attributeName] );
+			}
+		}
+	}
+	ss.rel = "stylesheet";
+	ss.href = href;
+	ss.media = "only x";
+	function ready( cb ){
+		if( doc.body ){
+			return cb();
+		}
+		setTimeout(function(){
+			ready( cb );
+		});
+	}
+	ready( function(){
+		ref.parentNode.insertBefore( ss, ( before ? ref : ref.nextSibling ) );
+	});
+	var onloadcssdefined = function( cb ){
+		var resolvedHref = ss.href;
+		var i = sheets.length;
+		while( i-- ){
+			if( sheets[ i ].href === resolvedHref ){
+				return cb();
+			}
+		}
+		setTimeout(function() {
+			onloadcssdefined( cb );
+		});
+	};
+	function loadCB(){
+		if( ss.addEventListener ){
+			ss.removeEventListener( "load", loadCB );
+		}
+		ss.media = media || "all";
+	}
+	if( ss.addEventListener ){
+		ss.addEventListener( "load", loadCB);
+	}
+	ss.onloadcssdefined = onloadcssdefined;
+	onloadcssdefined( loadCB );
+	return ss;
+};
+</script>
+<script>
+  
+  loadCSS("https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css", window.volantis.loadcss);
+  
+  
+  
+  
+</script>
+<!-- required -->
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
+
+<script>
+  function pjax_fancybox() {
+    $(".md .gallery").find("img").each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".md .gallery").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  function SCload_fancybox() {
+    if ($(".md .gallery").find("img").length == 0) return;
+    loadCSS("https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css", document.getElementById("loadcss"));
+    loadScript('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', pjax_fancybox)
+  };
+  $(function () {
+    SCload_fancybox();
+  });
+  function Pjax_SCload_fancybox(){
+	if (typeof $.fancybox == "undefined") {
+	 SCload_fancybox();
+    } else {
+	 pjax_fancybox();
+    }
+  }
+  volantis.pjax.push(Pjax_SCload_fancybox)
+  volantis.pjax.send(()=>{
+      if (typeof $.fancybox != "undefined") {
+        $.fancybox.close();    // 关闭弹窗
+      }
+  },'fancybox')
+</script>
+
+
+<!-- internal -->
+
+
+
+
+<script>
+  function loadIssuesJS() {
+    if ($(".md").find(".issues-api").length == 0) return;
+	
+	  loadScript('/js/issues.js');
+	
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  volantis.pjax.push(()=>{
+	if (typeof IssuesAPI == "undefined") {
+	  loadIssuesJS();
+	}
+  },"IssuesJS")
+</script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+
+
+  
+
+<script>
+  window.FPConfig = {
+	delay: 0,
+	ignoreKeywords: [],
+	maxRPS: 5,
+	hoverDelay: 25
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+  function pjax_valine() {
+    if(!document.querySelectorAll("#valine_container")[0])return;
+    let pagePlaceholder = pdata.commentPlaceholder || "快来评论吧~";
+    let path = pdata.commentPath;
+    if (path.length == 0) {
+      let defaultPath = '';
+      path = defaultPath || decodeURI(window.location.pathname);
+    }
+    var valine = new Valine();
+    valine.init(Object.assign({"path":null,"placeholder":"快来评论吧~","appId":null,"appKey":null,"meta":["nick","mail","link"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false}, {
+      el: '#valine_container',
+      path: path,
+      placeholder: pagePlaceholder,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps,
+    }))
+  }
+  $(function () {
+    pjax_valine();
+  });
+  volantis.pjax.push(pjax_valine);
+</script>
+
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+<!-- optional -->
+
+  <script>
+const SearchServiceimagePath="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/";
+const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
+
+$('.input.u-search-input').one('focus',function(){
+	
+		loadScript('/js/search/hexo.js',setSearchService);
+	
+})
+
+function listenSearch(){
+  
+    customSearch = new HexoSearch({
+      imagePath: SearchServiceimagePath
+    });
+  
+}
+function setSearchService() {
+	listenSearch();
+	
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  <script defer>
+
+  const LCCounter = {
+    app_id: 'mheOXKF8ti6V5lNSoPYOwUff-gzGzoHsz',
+    app_key: 'JlMe3dgg05uNi3T88KcUeueO',
+    custom_api_server: '',
+
+    // 查询存储的记录
+    getRecord(Counter, url, title) {
+      return new Promise(function (resolve, reject) {
+        Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({url})))
+          .then(resp => resp.json())
+          .then(({results, code, error}) => {
+            if (code === 401) {
+              throw error;
+            }
+            if (results && results.length > 0) {
+              var record = results[0];
+              resolve(record);
+            } else {
+              Counter('post', '/classes/Counter', {url, title: title, times: 0})
+                .then(resp => resp.json())
+                .then((record, error) => {
+                  if (error) {
+                    throw error;
+                  }
+                  resolve(record);
+                }).catch(error => {
+                console.error('Failed to create', error);
+                reject(error);
+              });
+            }
+          }).catch((error) => {
+          console.error('LeanCloud Counter Error:', error);
+          reject(error);
+        });
+      })
+    },
+
+    // 发起自增请求
+    increment(Counter, incrArr) {
+      return new Promise(function (resolve, reject) {
+        Counter('post', '/batch', {
+          "requests": incrArr
+        }).then((res) => {
+          res = res.json();
+          if (res.error) {
+            throw res.error;
+          }
+          resolve(res);
+        }).catch((error) => {
+          console.error('Failed to save visitor count', error);
+          reject(error);
+        });
+      });
+    },
+
+    // 构建自增请求体
+    buildIncrement(objectId) {
+      return {
+        "method": "PUT",
+        "path": `/1.1/classes/Counter/${ objectId }`,
+        "body": {
+          "times": {
+            '__op': 'Increment',
+            'amount': 1
+          }
+        }
+      }
+    },
+
+    // 校验是否为有效的 UV
+    validUV() {
+      var key = 'LeanCloudUVTimestamp';
+      var flag = localStorage.getItem(key);
+      if (flag) {
+        // 距离标记小于 24 小时则不计为 UV
+        if (new Date().getTime() - parseInt(flag) <= 86400000) {
+          return false;
+        }
+      }
+      localStorage.setItem(key, new Date().getTime().toString());
+      return true;
+    },
+
+    addCount(Counter) {
+      var enableIncr = '' === 'true' && window.location.hostname !== 'localhost';
+      enableIncr = true;
+      var getterArr = [];
+      var incrArr = [];
+      // 请求 PV 并自增
+      var pvCtn = document.querySelector('#lc-sv');
+      if (pvCtn || enableIncr) {
+        var pvGetter = this.getRecord(Counter, 'http://nikejasonlyz.github.io' + '/#lc-sv', 'Visits').then((record) => {
+          incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-sv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + 1;
+              if (pvCtn) {
+                pvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(pvGetter);
+      }
+
+      // 请求 UV 并自增
+      var uvCtn = document.querySelector('#lc-uv');
+      if (uvCtn || enableIncr) {
+        var uvGetter = this.getRecord(Counter, 'http://nikejasonlyz.github.io' + '/#lc-uv', 'Visitors').then((record) => {
+          var vuv = this.validUV();
+          vuv && incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-uv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + (vuv ? 1 : 0);
+              if (uvCtn) {
+                uvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(uvGetter);
+      }
+
+      // 请求文章的浏览数，如果是当前页面就自增
+      var allPV = document.querySelectorAll('#lc-pv');
+      if (allPV.length > 0 || enableIncr) {
+        for (i = 0; i < allPV.length; i++) {
+          let pv = allPV[i];
+          let title = pv.getAttribute('data-title');
+          var url = 'http://nikejasonlyz.github.io' + pv.getAttribute('data-path');
+          if (url) {
+            var viewGetter = this.getRecord(Counter, url, title).then((record) => {
+              // 是当前页面就自增
+              let curPath = window.location.pathname;
+              if (curPath.includes('index.html')) {
+                curPath = curPath.substring(0, curPath.lastIndexOf('index.html'));
+              }
+              if (pv.getAttribute('data-path') == curPath) {
+                incrArr.push(this.buildIncrement(record.objectId));
+              }
+              if (pv) {
+                var ele = pv.querySelector('#lc-pv #number');
+                if (ele) {
+                  if (pv.getAttribute('data-path') == curPath) {
+                    ele.innerText = (record.times || 0) + 1;
+                  } else {
+                    ele.innerText = record.times || 0;
+                  }
+                  pv.style.display = 'inline';
+                }
+              }
+            });
+            getterArr.push(viewGetter);
+          }
+        }
+      }
+
+      // 如果启动计数自增，批量发起自增请求
+      if (enableIncr) {
+        Promise.all(getterArr).then(() => {
+          incrArr.length > 0 && this.increment(Counter, incrArr);
+        })
+      }
+
+    },
+
+
+    fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${ api_server }/1.1${ url }`, {
+          method,
+          headers: {
+            'X-LC-Id': this.app_id,
+            'X-LC-Key': this.app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      this.addCount(Counter);
+    },
+
+    refreshCounter() {
+      var api_server = this.app_id.slice(-9) !== '-MdYXbMMI' ? this.custom_api_server : `https://${ this.app_id.slice(0, 8).toLowerCase() }.api.lncldglobal.com`;
+      if (api_server) {
+        this.fetchData(api_server);
+      } else {
+        fetch('https://app-router.leancloud.cn/2/route?appId=' + this.app_id)
+          .then(resp => resp.json())
+          .then(({api_server}) => {
+            this.fetchData('https://' + api_server);
+          });
+      }
+    }
+
+  };
+
+  LCCounter.refreshCounter();
+
+  document.addEventListener('pjax:complete', function () {
+    LCCounter.refreshCounter();
+  });
+</script>
+
+
+
+
+  <script>
+const rootElement = document.documentElement;
+const darkModeStorageKey = "user-color-scheme";
+const rootElementDarkModeAttributeName = "data-user-color-scheme";
+
+const setLS = (k, v) => {
+    localStorage.setItem(k, v);
+};
+
+const removeLS = (k) => {
+    localStorage.removeItem(k);
+};
+
+const getLS = (k) => {
+    return localStorage.getItem(k);
+};
+
+const getModeFromCSSMediaQuery = () => {
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
+};
+
+const resetRootDarkModeAttributeAndLS = () => {
+  rootElement.removeAttribute(rootElementDarkModeAttributeName);
+  removeLS(darkModeStorageKey);
+};
+
+const validColorModeKeys = {
+  dark: true,
+  light: true,
+};
+
+const applyCustomDarkModeSettings = (mode) => {
+  const currentSetting = mode || getLS(darkModeStorageKey);
+
+  if (currentSetting === getModeFromCSSMediaQuery()) {
+    resetRootDarkModeAttributeAndLS();
+  } else if (validColorModeKeys[currentSetting]) {
+    rootElement.setAttribute(rootElementDarkModeAttributeName, currentSetting);
+  } else {
+    resetRootDarkModeAttributeAndLS();
+  }
+};
+
+const invertDarkModeObj = {
+  dark: "light",
+  light: "dark",
+};
+
+/**
+ * get target mode
+ */
+const toggleCustomDarkMode = () => {
+  let currentSetting = getLS(darkModeStorageKey);
+
+  if (validColorModeKeys[currentSetting]) {
+    currentSetting = invertDarkModeObj[currentSetting];
+  } else if (currentSetting === null) {
+    currentSetting = invertDarkModeObj[getModeFromCSSMediaQuery()];
+  } else {
+    return;
+  }
+  setLS(darkModeStorageKey, currentSetting);
+  return currentSetting;
+};
+
+/**
+ * bind click event for toggle button
+ */
+var btn=$("#wrapper .toggle-mode-btn,#rightmenu-wrapper .toggle-mode-btn");
+function bindToggleButton() {
+    btn.on('click',(e) => {
+      const mode = toggleCustomDarkMode();
+      applyCustomDarkModeSettings(mode);
+    });
+}
+
+applyCustomDarkModeSettings();
+document.addEventListener("DOMContentLoaded", bindToggleButton);
+volantis.pjax.push(bindToggleButton);
+volantis.pjax.send(()=>{
+	btn.unbind('click');
+},'toggle-mode-btn-unbind');
+</script>
+
+
+
+
+
+
+
+
+<script>
+function listennSidebarTOC() {
+  const navItems = document.querySelectorAll(".toc li");
+  if (!navItems.length) return;
+  const sections = [...navItems].map((element) => {
+    const link = element.querySelector(".toc-link");
+    const target = document.getElementById(
+      decodeURI(link.getAttribute("href")).replace("#", "")
+    );
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      window.scrollTo({
+		top: target.offsetTop + 100,
+		
+		behavior: "smooth"
+		
+	  });
+    });
+    return target;
+  });
+
+  function activateNavByIndex(target) {
+    if (target.classList.contains("active-current")) return;
+
+    document.querySelectorAll(".toc .active").forEach((element) => {
+      element.classList.remove("active", "active-current");
+    });
+    target.classList.add("active", "active-current");
+    let parent = target.parentNode;
+    while (!parent.matches(".toc")) {
+      if (parent.matches("li")) parent.classList.add("active");
+      parent = parent.parentNode;
+    }
+  }
+
+  function findIndex(entries) {
+    let index = 0;
+    let entry = entries[index];
+    if (entry.boundingClientRect.top > 0) {
+      index = sections.indexOf(entry.target);
+      return index === 0 ? 0 : index - 1;
+    }
+    for (; index < entries.length; index++) {
+      if (entries[index].boundingClientRect.top <= 0) {
+        entry = entries[index];
+      } else {
+        return sections.indexOf(entry.target);
+      }
+    }
+    return sections.indexOf(entry.target);
+  }
+
+  function createIntersectionObserver(marginTop) {
+    marginTop = Math.floor(marginTop + 10000);
+    let intersectionObserver = new IntersectionObserver(
+      (entries, observe) => {
+        let scrollHeight = document.documentElement.scrollHeight + 100;
+        if (scrollHeight > marginTop) {
+          observe.disconnect();
+          createIntersectionObserver(scrollHeight);
+          return;
+        }
+        let index = findIndex(entries);
+        activateNavByIndex(navItems[index]);
+      },
+      {
+        rootMargin: marginTop + "px 0px -100% 0px",
+        threshold: 0,
+      }
+    );
+    sections.forEach((element) => {
+      element && intersectionObserver.observe(element);
+    });
+  }
+  createIntersectionObserver(document.documentElement.scrollHeight);
+}
+
+document.addEventListener("DOMContentLoaded", listennSidebarTOC);
+document.addEventListener("pjax:success", listennSidebarTOC);
+</script>
+
+<!-- more -->
+
+ 
+	   
+	    
+
+
+<script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script>
+
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      //window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+
+      volantis.$switcher.removeClass('active'); // 关闭移动端激活的搜索框
+      volantis.$header.removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      volantis.$wrapper.removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      volantis.$topBtn.unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+	  // 使用 volantis.pjax.send 方法传入pjax:send回调函数 参见layout/_partial/scripts/global.ejs
+	  volantis.pjax.method.send.start();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+      try{
+		// 使用 volantis.pjax.push 方法传入重载函数 参见layout/_partial/scripts/global.ejs
+		volantis.pjax.method.complete.start();
+      } catch (e) {
+        console.log(e);
+      }
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+	  // 使用 volantis.pjax.error 方法传入pjax:error回调函数 参见layout/_partial/scripts/global.ejs
+	  volantis.pjax.method.error.start();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+ 
+	  
+    </div>
+  </body>
+</html>
